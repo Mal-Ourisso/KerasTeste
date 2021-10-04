@@ -14,11 +14,9 @@ model.add(Dense(1, activation="sigmoid"))
 
 model.compile(loss="binary_crossentropy", optimizer="adam", metrics=["accuracy"])
 
-model.fit(x, y, epochs=150, batch_size=10)
+model.fit(x, y, epochs=768, batch_size=10)
 
-_, accuracy = model.evaluate(x, y)
-print("Acc: %.2f"%(accuracy*100))
-
-predictions = model.predict(x)
-for i in range(5):
-		print('%s => %d (expected %d)' % (x[i].tolist(), predictions[i], y[i]))
+model_json = model.to_json()
+with open("model_test.json", 'w') as json_file:
+	json_file.write(model_json)
+model.save_weights("model.h5")
