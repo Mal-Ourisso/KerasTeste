@@ -7,6 +7,8 @@ dataset = np.loadtxt("dataset.csv", delimiter=',')
 x = dataset[:,0:8]
 y = dataset[:,8]
 
+print("OK")
+
 model = Sequential()
 model.add(Dense(12, input_dim=8, activation="relu"))
 model.add(Dense(8, activation="relu"))
